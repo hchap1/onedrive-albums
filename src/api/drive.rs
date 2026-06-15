@@ -34,6 +34,12 @@ pub struct User {
     pub email: Option<String>
 }
 
+/// Get the drive data for the current access token
 pub async fn get_drive(access_token: String) -> Res<DriveData> {
     make_request::<DriveData>(URL, access_token, vec![]).await
+}
+
+/// Get the User owning the access token
+pub async fn get_user(access_token: String) -> Res<User> {
+    Ok(get_drive(access_token).await?.owner.user)
 }
