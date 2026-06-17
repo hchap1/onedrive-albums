@@ -29,6 +29,7 @@ pub struct Owner {
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct User {
+    pub id: String,
     #[serde(rename = "displayName")]
     pub display_name: Option<String>,
     pub email: Option<String>
