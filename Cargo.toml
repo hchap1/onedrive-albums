@@ -2,7 +2,7 @@
 name = "onedrive-albums"
 description = "Simple crate exposing Onedrive OAUTH2 authentication & implementing the album / photo features of the API"
 repository = "https://github.com/hchap1/onedrive-albums"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2024"
 license = "MIT"
 
