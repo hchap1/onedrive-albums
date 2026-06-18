@@ -852,6 +852,7 @@ dependencies = [
  "async-channel",
  "base64",
  "chrono",
+ "futures-core",
  "futures-util",
  "http-body-util",
  "hyper",

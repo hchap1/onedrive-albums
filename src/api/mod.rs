@@ -3,6 +3,7 @@ use serde::de::DeserializeOwned;
 
 use crate::error::Res;
 
+pub mod download;
 pub mod albums;
 pub mod photos;
 pub mod drive;
