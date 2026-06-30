@@ -15,7 +15,7 @@ pub struct DriveData {
     #[serde(rename = "description")]
     description: Option<String>,
 
-    pub id: String,
+    pub id: Option<String>,
 
     #[serde(rename = "driveType")]
     pub drive_type: String,
@@ -29,7 +29,7 @@ pub struct Owner {
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct User {
-    pub id: String,
+    pub id: Option<String>,
     #[serde(rename = "displayName")]
     pub display_name: Option<String>,
     pub email: Option<String>
