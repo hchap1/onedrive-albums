@@ -10,7 +10,7 @@ const RESPONSE_TYPE: &str = "code";
 // The URL of the local callback server to retrieve the code.
 pub const REDIRECT_URL: &str = "http://localhost:3000";
 const RESPONSE_MODE: &str = "query";
-pub const SCOPE: &str = "openid profile offline_access Files.Read";
+pub const SCOPE: &str = "openid profile offline_access Files.Read User.Read";
 
 // Inform microsoft that the PKCE challenge is SHA-256 hashed with BASE64 encoding.
 const CODE_CHALLENGE_METHOD: &str = "S256";
