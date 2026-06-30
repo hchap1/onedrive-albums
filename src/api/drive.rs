@@ -4,6 +4,7 @@ use crate::api::make_request;
 use crate::error::Res;
 
 const URL: &str = "https://graph.microsoft.com/v1.0/me/drive";
+const ME_URL: &str = "https://graph.microsoft.com/v1.0/me";
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct DriveData {
@@ -15,7 +16,7 @@ pub struct DriveData {
     #[serde(rename = "description")]
     description: Option<String>,
 
-    pub id: Option<String>,
+    pub id: String,
 
     #[serde(rename = "driveType")]
     pub drive_type: String,
@@ -29,7 +30,7 @@ pub struct Owner {
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct User {
-    pub id: Option<String>,
+    pub id: String,
     #[serde(rename = "displayName")]
     pub display_name: Option<String>,
     pub email: Option<String>
@@ -42,5 +43,5 @@ pub async fn get_drive(access_token: String) -> Res<DriveData> {
 
 /// Get the User owning the access token
 pub async fn get_user(access_token: String) -> Res<User> {
-    Ok(get_drive(access_token).await?.owner.user)
+    make_request::<User>(ME_URL, access_token, vec![]).await
 }
