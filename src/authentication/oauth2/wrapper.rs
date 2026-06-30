@@ -16,6 +16,16 @@ pub struct SemiPermanentToken {
     pub expiration: usize
 }
 
+/// Perform the interactive OAuth2 flow and return the raw authorization code and PKCE verifier.
+/// Pass both to `post_oauth2_code` to exchange for a token set.
+pub async fn acquire_auth_code() -> Res<(String, String)> {
+    let csrf = generate_csrf();
+    let (pkce_verifier, pkce_challenge) = generate_pkce();
+    launch_oauth2(csrf.clone(), pkce_challenge).await?;
+    let auth_code = run_server(csrf).await?;
+    Ok((auth_code, pkce_verifier))
+}
+
 /// Acquire a semi-permanent token allowing future sessions to be started without requiring user approval every time
 pub async fn acquire_refresh_token() -> Res<SemiPermanentToken> {
 
